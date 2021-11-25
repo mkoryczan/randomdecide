@@ -20,6 +20,6 @@ draw:
     success: '<strong>Brawo!</strong> Kategoria losowania została zedytowana.'
     error: '<strong>Błąd!</strong> Nie udało się edytować kategorii.'
   list:
-    title: 'Lista kategori'
+    title: 'Lista kategorii'
 errors:
     drawsLimit: Osiągnięto maksymalną ilość kategorii
