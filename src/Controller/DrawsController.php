@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Draw;
 use App\Form\Draw\DrawAddForm;
+use App\Form\Draw\DrawEditForm;
 use App\Repository\DrawsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,7 +94,7 @@ class DrawsController extends AbstractController
             throw $this->createNotFoundException('404 Not Found');
         }
 
-        $form = $this->createForm(DrawAddForm::class, $draw);
+        $form = $this->createForm(DrawEditForm::class, $draw);
 
         $form->handleRequest($request);
 
