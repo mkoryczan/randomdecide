@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="jumbotron mt-3">
+        <div class="container">
+            <h1>{{ 'draw.list.title'|trans }}</h1>
+            <a class="btn btn-primary" href="{{ path('draws_add') }}">{{ 'buttons.add.draw'|trans }}</a>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <ul>
+                    {% for draw in drawsList %}
+                        <li><a href="{{ path('draws_edit', {'name': draw.name}) }}">{{ draw.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+homepage:
+  title: Witaj w Random Decide!
+  subtitle: Nie możesz się zdecydować? Niech los zdecyduje za Ciebie!
+buttons:
+  save: Zapisz
+  goto:
+    drawsList: Przejdź do listy kategorii
+  add:
+    draw: Dodaj kategorię
+draw:
+  form:
+    labels:
+      name: "Nazwa: "
+  add:
+    title: Dodaj kategorię
+    success: '<strong>Brawo!</strong> Kategoria losowania została dodana.'
+    error: '<strong>Błąd!</strong> Nie udało się dodać kategorii.'
+  edit:
+    title: Edytuj kategorię
+    success: '<strong>Brawo!</strong> Kategoria losowania została zedytowana.'
+    error: '<strong>Błąd!</strong> Nie udało się edytować kategorii.'
+  list:
+    title: 'Lista kategori'
+errors:
+    drawsLimit: Osiągnięto maksymalną ilość kategorii
