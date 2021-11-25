@@ -8,3 +8,4 @@ Funkcjonalności:
 - edycja kategorii
 - losowanie opcji 
 
+Wersja testowa http://randomdecide.mkoryczan.pl
