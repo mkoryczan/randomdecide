@@ -74,7 +74,8 @@ class DrawsController extends AbstractController
         }
 
         return $this->render('draws/add.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'action' => 'add'
         ]);
     }
 
@@ -117,7 +118,8 @@ class DrawsController extends AbstractController
 
 
         return $this->render('draws/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'action' => 'edit'
         ]);
     }
 

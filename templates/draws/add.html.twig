@@ -3,7 +3,7 @@
 {% block content %}
     <div class="jumbotron mt-3">
         <div class="container">
-            <h1>{{ 'draw.add.title'|trans }}</h1>
+            <h1>{{ ('draw.'~action~'.title')|trans }}</h1>
         </div>
     </div>
     <div class="container mt-3">
@@ -11,11 +11,39 @@
             {{ form_start(form) }}
                 <div class="form-group mt-5">
                     <div class="row">
-                        <div class="col-12 col-md-3 offset-lg-2 text-md-right align-self-center font-weight-bold">
+                        <div class="col-12 col-md-3 offset-lg-2 text-md-right align-self-start mt-2 font-weight-bold">
                             {{ form_label(form.name) }}
                         </div>
                         <div class="col-12 col-md-4">
                             {{ form_widget(form.name, {attr: {class: 'form-control'}}) }}
+                            <span class="error">{{ form_errors(form.name) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-5">
+                    <div class="row">
+                        <div class="col-12 col-md-3 offset-lg-2 text-md-right align-self-start mt-2 font-weight-bold">
+                            {{ form_label(form.choices) }}
+                            <span class="error">{{ form_errors(form.choices) }}</span>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <ol id='choices-fields-list' class="mb-0"
+                                data-prototype="{{ form_widget(form.choices.vars.prototype, {attr: {class: 'form-control mb-2'}})|e }}"
+                                data-widget-tags="{{ '<li></li>'|e }}"
+                                data-widget-counter="{{ form.choices|length }}">
+                                {% if form.choices|length %}
+                                    {% for choiceField in form.choices %}
+                                        <li>
+                                            {{ form_widget(choiceField, {attr: {class: 'form-control mb-2'}}) }}
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    {{ form_widget(form.choices) }}
+                                {% endif %}
+                            </ol>
+                            <button type="button"
+                                    class="btn btn-link add-another-collection-widget"
+                                    data-list-selector="#choices-fields-list">{{ 'buttons.add.drawChoice'|trans }}</button>
                         </div>
                     </div>
                 </div>
@@ -29,4 +57,22 @@
             {{ form_end(form) }}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $('.add-another-collection-widget').click(function (e) {
+                var list = $($(this).attr('data-list-selector'));
+                var counter = list.data('widget-counter') || list.children().length;
+                var newWidget = list.attr('data-prototype');
+                newWidget = newWidget.replace(/__name__/g, counter);
+                counter++;
+                list.data('widget-counter', counter);
+                var newElem = $(list.attr('data-widget-tags')).html(newWidget);
+                newElem.appendTo(list);
+            });
+        });
+    </script>
 {% endblock %}

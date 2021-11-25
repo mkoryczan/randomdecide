@@ -3,6 +3,7 @@
 namespace App\Form\Draw;
 
 use App\Form\FormAbstract;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,6 +15,15 @@ class DrawAddForm extends FormAbstract
         $builder
             ->add('name', TextType::class, [
                 'label' => 'draw.form.labels.name',
+                'required' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ]
+            ])
+            ->add('choices', CollectionType::class, [
+                'entry_type' => TextType::class,
+                'allow_add' => true,
+                'label' => 'draw.form.labels.choices',
                 'required' => true,
                 'attr' => [
                     'autocomplete' => 'off'

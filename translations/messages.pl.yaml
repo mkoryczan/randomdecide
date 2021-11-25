@@ -7,10 +7,12 @@ buttons:
     drawsList: Przejdź do listy kategorii
   add:
     draw: Dodaj kategorię
+    drawChoice: Dodaj opcję
 draw:
   form:
     labels:
       name: "Nazwa: "
+      choices: "Opcje: "
   add:
     title: Dodaj kategorię
     success: '<strong>Brawo!</strong> Kategoria losowania została dodana.'
